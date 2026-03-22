@@ -41,10 +41,10 @@
 原文 → 本地模型粗标注 → LLM review修正 → 输出标注
 ```
 
-**优势**:
-- 本地模型处理90%常见实体(人名/地名/官职)
-- LLM只处理疑难案例和关系推理
-- 大幅降低token消耗
+**设计思路**:
+- 本地模型处理常见实体(人名/地名等)
+- LLM处理复杂实体(官职/事件)和消歧
+- 目标: 降低token消耗,保持标注质量
 
 ### 方案C: 纯LLM (对照组)
 
@@ -66,113 +66,148 @@
 ```
 labs/hybrid-semantic-analysis/
 ├── README.md              # 本文件
-├── MODEL_STORAGE.md       # 模型文件存储位置说明
+├── QUICKSTART.md          # 快速开始指南 ⭐
+├── STATUS.md              # 当前进度状态
 ├── requirements.txt       # Python依赖
 ├── config.yaml            # 配置文件(模型路径/API key)
-├── download_qwen.py       # Qwen2.5-7B 下载脚本
+├── run_tests.sh           # 一键测试脚本
+│
+├── 文档/
+│   ├── MODEL_STORAGE.md   # 模型文件存储位置说明
+│   ├── LTP_STATUS.md      # LTP兼容性状态
+│   ├── LTP_COMPATIBILITY_ISSUE.md  # LTP兼容性问题详解
+│   ├── QWEN_MEMORY_ISSUE.md        # Qwen内存问题分析
+│   └── QWEN_TEST_SUMMARY.md        # Qwen测试总结
+│
+├── 测试脚本/
+│   ├── test_ltp.py             # LTP统一测试(支持3个尺度)
+│   ├── test_qwen_actual.py     # Qwen实际测试(FP16)
+│   ├── test_qwen_int8.py       # Qwen量化测试(INT8)
+│   ├── download_qwen.py        # Qwen模型下载
+│   ├── extract_chapter_text.py # 提取章节文本
+│   └── patch_ltp.py            # LTP兼容性补丁
+│
 ├── data/
-│   ├── test_corpus.txt    # 测试语料
-│   └── ground_truth.tagged.md  # 人工标注的参考答案
+│   ├── test_corpus.txt         # 短文本测试语料(138字)
+│   ├── test_corpus_long.txt    # 中文本测试语料(631字)
+│   ├── test_corpus_chapter.txt # 长文本测试语料(3000字)
+│   └── ground_truth.tagged.md  # 标准答案
+│
 ├── methods/
 │   ├── method_a_local.py  # 方案A: 纯本地
-│   ├── method_b_hybrid.py # 方案B: 混合
-│   └── method_c_llm.py    # 方案C: 纯LLM
+│   ├── method_b_hybrid.py # 方案B: 混合 (⏳待实现)
+│   └── method_c_llm.py    # 方案C: 纯LLM (⏳待实现)
+│
 ├── utils/
+│   ├── __init__.py        # 工具模块
 │   ├── evaluator.py       # 评估工具
 │   └── tokenizer.py       # Token计数工具
+│
 ├── results/
+│   ├── test_data_summary.md       # 测试数据说明 ⭐
+│   ├── ltp_experiment_report.md   # LTP详细分析 ⭐
 │   ├── experiment_summary.md      # 实验总结报告
-│   ├── ltp_experiment_report.md   # LTP详细分析
-│   ├── method_a_ltp_result.tagged.md
-│   ├── method_a_qwen_result.tagged.md
-│   ├── method_b_result.tagged.md
-│   ├── method_c_result.tagged.md
-│   └── comparison.json    # 对比结果
-├── models/                # 本地模型目录 (已在.gitignore中)
-└── notebooks/
-    └── analysis.ipynb     # 结果分析notebook
+│   ├── ltp_long_result.json       # LTP中文本结果
+│   └── comparison.json            # 对比结果
+│
+└── venv/                  # 虚拟环境 (gitignored)
 ```
+
+## 核心文档导航
+
+### 📘 新手入门
+- **[QUICKSTART.md](QUICKSTART.md)** - 快速开始指南,一键运行测试
+- **[STATUS.md](STATUS.md)** - 当前实验进度和下一步计划
+
+### 📊 实验结果
+- **[results/test_data_summary.md](results/test_data_summary.md)** - 测试数据说明(3个尺度)
+- **[results/ltp_experiment_report.md](results/ltp_experiment_report.md)** - LTP详细分析报告
+- **[results/experiment_summary.md](results/experiment_summary.md)** - 总体实验总结
+
+### 🔧 技术文档
+- **[MODEL_STORAGE.md](MODEL_STORAGE.md)** - 模型文件存储位置和管理
+- **[LTP_STATUS.md](LTP_STATUS.md)** - LTP兼容性状态和解决方案
+- **[QWEN_TEST_SUMMARY.md](QWEN_TEST_SUMMARY.md)** - Qwen测试过程和问题总结
+- **[QWEN_MEMORY_ISSUE.md](QWEN_MEMORY_ISSUE.md)** - Qwen内存问题详细分析
+
+### 🔍 问题诊断
+- **[LTP_COMPATIBILITY_ISSUE.md](LTP_COMPATIBILITY_ISSUE.md)** - LTP兼容性问题根因分析
 
 ## 快速开始
 
-### 1. 安装依赖
+**推荐**: 直接查看 **[QUICKSTART.md](QUICKSTART.md)** 获取完整使用指南。
+
+### 一键运行测试
 
 ```bash
 cd labs/hybrid-semantic-analysis
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+./run_tests.sh
 ```
 
-### 2. 下载模型
+脚本会自动:
+- 激活虚拟环境
+- 检查测试数据
+- 运行所有可用测试(LTP 3个尺度)
+- 显示结果汇总
 
-**下载 Qwen2.5-7B** (~15GB, 10-30分钟):
-```bash
-python download_qwen.py
-```
+## 实测结果
 
-**查看模型存储位置**: 参见 [MODEL_STORAGE.md](MODEL_STORAGE.md)
-- 默认位置: `~/.cache/huggingface/hub/`
-- 支持断点续传
-- 不会提交到 git (已配置 .gitignore)
+### 方案A1: LTP依存文法 ✅
 
-### 3. 配置
+| 指标 | 138字 | 631字 | 3000字 |
+|------|-------|-------|--------|
+| 召回率 | 83.3% | - | 88.9% |
+| 精确率 | 100% | - | 99% |
+| 时间 | 1.5秒 | 1.8秒 | 2.1秒 |
+| 成本 | $0 | $0 | $0 |
 
-编辑 `config.yaml`:
+**优势**: 零成本,速度快,人名/地名识别完美
+**局限**: 无法识别官职类实体(OFFICE)
 
-```yaml
-# 本地模型配置
-local_model:
-  type: "ltp"  # 可选: ltp / hanlp / qwen / glm
-  model_path: "/path/to/model"  # 仅小模型需要
-  device: "cuda"  # cuda / cpu
+详见: [results/ltp_experiment_report.md](results/ltp_experiment_report.md)
 
-# LLM配置
-llm:
-  provider: "anthropic"  # anthropic / openai
-  api_key: "${ANTHROPIC_API_KEY}"
-  model: "claude-3-5-sonnet-20241022"
+### 方案A2: Qwen2.5-7B ❌
 
-# 评估配置
-evaluation:
-  ground_truth: "data/ground_truth.tagged.md"
-```
+**状态**: 实测失败 - 显存不足(OOM x2)
 
-### 4. 运行实验
+- 需要: 14-16GB显存(FP16模式)
+- 当前: 8GB显存(RTX 4060 Laptop)
+- 替代: 可尝试Qwen2.5-3B (6GB显存)
 
-```bash
-# 方案A: 纯本地
-python methods/method_a_local.py
+详见: [QWEN_TEST_SUMMARY.md](QWEN_TEST_SUMMARY.md)
 
-# 方案B: 混合
-python methods/method_b_hybrid.py
+### 方案B: 混合方案 ⏳
 
-# 方案C: 纯LLM
-python methods/method_c_llm.py
+**状态**: 待实现
 
-# 对比结果
-python utils/evaluator.py
-```
+**设计**:
+1. LTP预标注(人名/地名)
+2. LLM精炼(官职/事件/消歧)
 
-## 预期结果
+### 方案C: 纯Claude ⏳
 
-| 方案 | 时间(秒) | Token消耗 | 准确率 | 召回率 | 显存(GB) |
-|------|---------|----------|--------|--------|----------|
-| A-依存文法 | ~2 | 0 | 60-70% | 80-90% | <1 |
-| A-Qwen7B | ~5 | 0 | 75-85% | 85-95% | 5 |
-| B-混合(LTP+LLM) | ~3 | 500-1000 | 90-95% | 95-98% | <1 |
-| B-混合(Qwen+LLM) | ~6 | 300-800 | 92-97% | 96-99% | 5 |
-| C-纯LLM | ~10 | 3000-5000 | 95-99% | 98-100% | 0 |
+**状态**: 待实现
 
-**结论预期**:
-- 方案B(混合)可节省70-80% token成本
-- 质量仅比纯LLM低2-5个百分点
-- 适合大规模批量标注
+## 当前进度
 
-## 下一步
+- ✅ 环境搭建和依赖安装
+- ✅ 测试数据准备(3个尺度)
+- ✅ LTP完整测试(短/中/长)
+- ✅ Qwen模型下载(15GB)
+- ❌ Qwen实际测试(显存不足)
+- ⏳ 混合方案实现
+- ⏳ Claude方案实现
+- ⏳ 最终对比分析
 
-- [ ] 实现三种方案的代码
-- [ ] 准备测试语料和ground truth
-- [ ] 运行A/B测试
-- [ ] 分析结果并撰写报告
-- [ ] 将最优方案集成到主工序
+详见: [STATUS.md](STATUS.md)
+
+## 下一步行动
+
+1. 实现方案B(混合): LTP + Claude精炼
+2. 实现方案C(纯Claude): 直接标注
+3. 运行对比测试,生成分析报告
+4. (可选)测试Qwen2.5-3B作为补充数据
+
+## 参与贡献
+
+如有问题或建议,请查看相关文档或在项目中提issue。

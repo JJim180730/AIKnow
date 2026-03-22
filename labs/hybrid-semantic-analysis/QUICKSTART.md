@@ -1,133 +1,136 @@
-# 快速开始
+# 快速开始指南
+
+## 一键运行测试 ⭐
+
+```bash
+cd labs/hybrid-semantic-analysis
+./run_tests.sh
+```
+
+**说明**: 脚本会自动激活虚拟环境并运行所有可用测试。
+
+---
 
 ## 环境要求
 
 - Python 3.8+
-- CUDA 11.x+ (如使用GPU)
-- 8GB显存 (如使用小模型)
+- CUDA 11.x+ (如使用GPU,可选)
+- 8GB显存 (如使用小模型,可选)
 
 ## 安装
 
-### 1. 安装基础依赖
+### 1. 创建虚拟环境
 
 ```bash
 cd labs/hybrid-semantic-analysis
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# 或 venv\Scripts\activate  # Windows
+```
+
+### 2. 安装基础依赖
+
+```bash
 pip install -r requirements.txt
 ```
 
-### 2. 选择本地模型
+### 3. 下载模型 (可选)
 
-#### 选项A: LTP (推荐,几乎不占显存)
+**⚠️ 重要提示**: Qwen2.5-7B需要14-16GB显存(FP16模式),8GB显存环境会OOM。
 
+**Qwen2.5-7B** (~15GB, 需要16GB显存):
 ```bash
-pip install ltp
+python download_qwen.py
 ```
 
-#### 选项B: HanLP
-
+**Qwen2.5-3B** (~6GB, **推荐8GB显存环境**):
 ```bash
-pip install hanlp
+python download_qwen.py --model Qwen/Qwen2.5-3B-Instruct
 ```
 
-#### 选项C: Qwen2.5-7B (需4-5GB显存)
+**说明**:
+- 模型保存在 `~/.cache/huggingface/hub/`
+- 支持断点续传
+- 不会进入git (已在.gitignore中)
+- **8GB显存建议使用Qwen2.5-3B或demo模拟结果**
+
+详细说明:
+- [MODEL_STORAGE.md](MODEL_STORAGE.md) - 存储位置
+- [QWEN_MEMORY_ISSUE.md](QWEN_MEMORY_ISSUE.md) - 内存问题分析
+- [QWEN_TEST_SUMMARY.md](QWEN_TEST_SUMMARY.md) - 测试总结
+
+### 4. 配置API密钥 (可选)
+
+仅当需要测试Claude时:
 
 ```bash
-pip install transformers torch sentencepiece accelerate
-
-# 下载模型
-huggingface-cli download Qwen/Qwen2.5-7B-Instruct --local-dir models/qwen2.5-7b
-```
-
-#### 选项D: GLM-4-9B (需6-7GB显存)
-
-```bash
-pip install transformers torch sentencepiece accelerate
-
-# 下载模型
-huggingface-cli download THUDM/glm-4-9b-chat --local-dir models/glm-4-9b
-```
-
-### 3. 配置API密钥
-
-```bash
-export ANTHROPIC_API_KEY="your-api-key"
-```
-
-或编辑 `config.yaml`:
-
-```yaml
-llm:
-  api_key: "your-api-key"
+export ANTHROPIC_API_KEY="sk-ant-..."
 ```
 
 ## 运行实验
 
-### 方式1: 运行完整A/B测试
+### 方式1: 一键集成测试 ⭐ 推荐
 
 ```bash
-python run_experiments.py
+./run_tests.sh
 ```
 
-这会依次运行:
-1. 方案A (本地模型)
-2. 方案B (混合方案)
-3. 方案C (纯LLM)
-4. 生成对比报告
+**功能**:
+- 自动激活虚拟环境
+- 检查测试数据
+- 运行所有可用测试 (LTP, Qwen, etc.)
+- 显示结果汇总
 
-### 方式2: 单独运行某个方案
+### 方式2: 单独运行测试
 
+**LTP测试** (真实LTP调用):
 ```bash
-# 只运行方案A (本地)
-python run_experiments.py --methods a
+# 短文本 (138字)
+python test_ltp.py --data short
 
-# 只运行方案B (混合)
-python run_experiments.py --methods b
+# 中文本 (631字)
+python test_ltp.py --data medium
 
-# 只运行方案C (LLM)
-python run_experiments.py --methods c
-
-# 运行A和B
-python run_experiments.py --methods a b
+# 长文本 (3000字)
+python test_ltp.py --data long
 ```
 
-### 方式3: 手动运行
+**注意**: LTP在Python 3.13环境下存在兼容性问题,详见 [LTP_STATUS.md](LTP_STATUS.md)
 
+**Qwen测试** (需16GB显存):
 ```bash
-# 方案A
-cd methods
-python method_a_local.py
+# FP16模式 (需16GB显存)
+python test_qwen_actual.py
 
-# 方案B
-python method_b_hybrid.py
+# INT8量化 (需8GB显存,但可能有CUDA兼容性问题)
+python test_qwen_int8.py
+```
 
-# 方案C
-python method_c_llm.py
-
-# 评估
-cd ../utils
-python evaluator.py
+**Claude测试** (需API key):
+```bash
+export ANTHROPIC_API_KEY="sk-ant-..."
+python methods/method_c_claude.py  # 待实现
 ```
 
 ## 查看结果
 
-结果保存在 `results/` 目录:
+### 结果文件
 
 ```
 results/
-├── method_a_ltp_result.tagged.md    # 方案A标注结果
-├── method_a_ltp_result.json         # 方案A元数据
-├── method_b_hybrid_result.tagged.md # 方案B标注结果
-├── method_b_hybrid_result.json      # 方案B元数据
-├── method_c_llm_result.tagged.md    # 方案C标注结果
-├── method_c_llm_result.json         # 方案C元数据
-└── comparison.json                  # 对比报告
+├── experiment_summary.md        # 实验总结报告 ⭐ 主报告
+├── ltp_experiment_report.md     # LTP详细分析
+├── test_data_summary.md         # 测试数据说明
+├── comparison.json              # 对比数据
+├── ltp_long_result.json         # LTP长文本结果
+└── method_a_*.json/tagged.md    # 各方法具体结果
 ```
 
-查看对比报告:
+### 推荐阅读顺序
 
-```bash
-cat results/comparison.json
-```
+1. [test_data_summary.md](results/test_data_summary.md) - 了解测试数据
+2. [experiment_summary.md](results/experiment_summary.md) - 查看核心结论
+3. [ltp_experiment_report.md](results/ltp_experiment_report.md) - LTP深度分析
 
 ## 自定义测试数据
 
@@ -160,21 +163,29 @@ vim data/ground_truth.tagged.md
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple ltp
 ```
 
-### Q2: CUDA out of memory
+### Q2: Qwen CUDA out of memory
 
-降低batch_size:
+**问题**: Qwen2.5-7B在8GB显存环境OOM
 
-```yaml
-local_model:
-  batch_size: 1
+**解决方案**:
+
+1. **使用更小的模型** (推荐):
+```bash
+python download_qwen.py --model Qwen/Qwen2.5-3B-Instruct
 ```
 
-或使用CPU:
-
-```yaml
-local_model:
-  device: "cpu"
+2. **使用demo模拟结果**:
+```bash
+python demo_qwen_result.py  # 无需GPU,基于已知Qwen行为
 ```
+
+3. **使用INT8量化** (需bitsandbytes):
+```bash
+pip install bitsandbytes accelerate
+python test_qwen_int8.py  # 显存需求从14GB降至7GB
+```
+
+详见: [QWEN_MEMORY_ISSUE.md](QWEN_MEMORY_ISSUE.md)
 
 ### Q3: API限流
 

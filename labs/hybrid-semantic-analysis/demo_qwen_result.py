@@ -2,8 +2,12 @@
 """
 演示Qwen2.5-7B标注结果
 
-说明: Qwen模型下载约15GB,首次运行需要较长时间
-这里展示模拟的标注效果
+⚠️ 警告: 这是演示脚本,所有性能数据为示例,不代表实际性能
+- 标注结果基于ground truth生成,仅用于展示标注格式
+- 性能指标(召回率/精确率/速度)为示例值,无实际参考价值
+- 实际性能需要使用真实模型测试获得
+
+用途: 理解标注格式和工作流程,不用于性能评估
 """
 
 import json
@@ -73,20 +77,21 @@ gt_entities = extract_entity_texts(ground_truth)
 recall = len(qwen_entities & gt_entities) / len(gt_entities) * 100
 precision = len(qwen_entities & gt_entities) / len(qwen_entities) * 100 if qwen_entities else 0
 
-print(f"\nQwen性能(模拟):")
-print(f"  召回率: {recall:.1f}%")
-print(f"  精确率: {precision:.1f}%")
+print(f"\n⚠️ 以下为演示数据,无实际参考价值:")
+print(f"  召回率: {recall:.1f}% (示例值)")
+print(f"  精确率: {precision:.1f}% (示例值)")
 print(f"  完全匹配: {qwen_result == ground_truth}")
 
-# 元数据
+# 元数据 (⚠️ 示例值,无实际意义)
 metadata = {
-    "method": "method_a_qwen",
-    "time_seconds": 5.2,  # 估计值(8GB显存,7B模型)
+    "method": "method_a_qwen_demo",
+    "note": "这是演示数据,不代表实际性能",
+    "time_seconds": 5.2,  # 示例值
     "token_count": 0,
     "entity_count": qwen_count,
-    "recall": recall / 100,
-    "precision": precision / 100,
-    "gpu_memory_mb": 4500,  # FP16约4.5GB
+    "recall": recall / 100,  # 示例值
+    "precision": precision / 100,  # 示例值
+    "gpu_memory_mb": 4500,  # 示例值
 }
 
 print(f"\n元数据:")
@@ -118,12 +123,12 @@ Qwen2.5-7B 小模型的特点:
 4. 局限: 需要4-7GB显存
 5. 局限: 推理速度较慢(~5秒/138字)
 
-性能表现(模拟):
-- 召回率: 100% (识别所有实体)
-- 精确率: 100% (基本无误报)
-- 与Ground Truth完全匹配!
+⚠️ 本脚本为演示用途:
+- 标注结果与ground truth完全匹配(因为是基于它生成的)
+- 性能数据为示例值,不代表实际性能
+- 仅用于展示标注格式和工作流程
 
-本演示为模拟结果,实际Qwen运行时:
+实际Qwen测试:
 - 首次需要下载模型(~15GB,约需10-30分钟)
 - 需要8GB显存(FP16模式约4.5GB)
 - 可使用CPU模式(较慢,约30秒/138字)
@@ -134,11 +139,12 @@ Qwen2.5-7B 小模型的特点:
 """)
 
 print("\n" + "=" * 80)
-print("性能对比总结:")
+print("⚠️ 以下为演示对比,仅LTP为实测数据:")
 print("=" * 80)
-print(f"{'方案':<15} {'召回率':<10} {'精确率':<10} {'耗时':<10} {'显存':<10} {'Token成本'}")
+print(f"{'方案':<15} {'召回率':<10} {'精确率':<10} {'耗时':<10} {'显存':<10} {'状态'}")
 print("-" * 80)
-print(f"{'LTP':<15} {'83%':<10} {'100%':<10} {'1.5秒':<10} {'<100MB':<10} {'$0'}")
-print(f"{'Qwen2.5-7B':<15} {'100%':<10} {'100%':<10} {'5秒':<10} {'4.5GB':<10} {'$0'}")
-print(f"{'Claude (预期)':<15} {'98%':<10} {'98%':<10} {'8秒':<10} {'0':<10} {'~$0.01'}")
+print(f"{'LTP':<15} {'83.3%':<10} {'100%':<10} {'1.5秒':<10} {'<100MB':<10} {'✅实测'}")
+print(f"{'Qwen2.5-7B':<15} {'?':<10} {'?':<10} {'?':<10} {'14GB':<10} {'❌OOM'}")
+print(f"{'Claude':<15} {'?':<10} {'?':<10} {'?':<10} {'0':<10} {'⏳待测'}")
 print("=" * 80)
+print("\n说明: Qwen和Claude的性能需要实际测试,不做预估")
