@@ -6,6 +6,11 @@
     <title>姓氏宗族 - 史记知识库</title>
     <link rel="stylesheet" href="../css/shiji-styles.css">
     <link rel="stylesheet" href="../css/entity-index.css">
+
+    <!-- ag-Grid CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@31.0.0/styles/ag-grid.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@31.0.0/styles/ag-theme-alpine.css">
+
     <style>
         /* 姓氏宗族特定样式 */
         .xing-entry {
@@ -188,6 +193,102 @@
 
         .intro-section strong {
             color: #8B4513;
+        }
+
+        /* 人物姓氏表格样式 */
+        .person-table-section {
+            margin: 3em 0;
+            padding: 2em;
+            background: #fffef8;
+            border: 1px solid #e6e0c0;
+            border-radius: 8px;
+        }
+
+        .person-table-section h2 {
+            color: #8B4513;
+            margin-top: 0;
+            border-bottom: 3px solid #d4af37;
+            padding-bottom: 0.5em;
+        }
+
+        .table-controls {
+            margin: 1.5em 0;
+            display: flex;
+            gap: 1em;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .table-controls input {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.6em;
+            border: 1px solid #d4af37;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .table-controls button {
+            padding: 0.6em 1.2em;
+            background: #8B4513;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.95em;
+        }
+
+        .table-controls button:hover {
+            background: #6d3510;
+        }
+
+        #personGrid {
+            height: 600px;
+            width: 100%;
+            margin: 1em 0;
+        }
+
+        .ag-theme-alpine {
+            --ag-header-background-color: #8B4513;
+            --ag-header-foreground-color: white;
+            --ag-odd-row-background-color: #fffef8;
+            --ag-border-color: #e6e0c0;
+            --ag-row-hover-color: #f8f5e8;
+            font-family: inherit;
+        }
+
+        .ag-header {
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 102 !important;
+            background: white !important;
+        }
+
+        .ag-body-horizontal-scroll {
+            position: sticky !important;
+            top: var(--ag-header-height, 48px) !important;
+            z-index: 101 !important;
+            background: white !important;
+            border-top: 1px solid #e6e0c0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .table-stats {
+            background: #f0f7ff;
+            border: 1px solid #b8d4f1;
+            border-radius: 4px;
+            padding: 1em;
+            margin: 1em 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1em;
+        }
+
+        .table-stat-item {
+            color: #2c5aa0;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -639,16 +740,59 @@
             <div class="note-item">• <strong>赵氏嬴姓</strong>：赵氏为嬴姓，非姬姓。造父封于赵城，以赵为氏。与秦同出于伯益。</div>
         </div>
 
+        <!-- 人物姓氏查询表 -->
+        <div class="person-table-section">
+            <h2>人物姓氏查询表（2095人）</h2>
+
+            <div class="intro-section" style="margin: 1.5em 0;">
+                <p>本表收录《史记》人物的姓氏信息，包括先秦人物的<strong>姓</strong>（血缘）、<strong>氏</strong>（分家）、<strong>名</strong>、<strong>字</strong>等信息。支持搜索、筛选、排序功能。</p>
+                <p><strong>数据版本</strong>：v2.1，2095人（覆盖率 57.7%），基于 MD 详细记录增量更新。</p>
+            </div>
+
+            <div class="table-controls">
+                <input type="text" id="personSearch" placeholder="搜索人名、姓、氏、字...">
+                <button onclick="exportPersonCSV()">📥 导出CSV</button>
+                <button onclick="clearPersonFilters()">🔄 清除筛选</button>
+            </div>
+
+            <div class="table-stats" id="personStats" style="display: none;">
+                <div class="table-stat-item">
+                    总计 <span id="totalPersons">0</span> 人
+                </div>
+                <div class="table-stat-item">
+                    显示 <span id="displayedPersons">0</span> 人
+                </div>
+                <div class="table-stat-item">
+                    先秦人物 <span id="preQinCount">0</span> 人
+                </div>
+            </div>
+
+            <div id="personGrid" class="ag-theme-alpine">
+                <div style="text-align: center; padding: 3em; color: #666;">
+                    正在加载数据...
+                </div>
+            </div>
+        </div>
+
         <!-- 数据来源 -->
         <div class="notes-section">
             <h4>数据来源</h4>
-            <div class="note-item">• 姓氏源流：<code>kg/entities/data/xing_index.json</code></div>
-            <div class="note-item">• 人物姓氏：<code>kg/entities/data/person_xingshi.json</code> (2053人)</div>
-            <div class="note-item">• 推理详情：<code>kg/entities/data/person_xingshi.md</code></div>
+            <div class="note-item">• 姓氏源流索引：<code>data/xingshi/xing_index.json</code> (3.3KB)</div>
+            <div class="note-item">• 人物姓氏JSON：<code>data/xingshi/person_xingshi.json</code> (2095人，604KB，v2.1)</div>
+            <div class="note-item">• 推理详情Markdown：<code>data/xingshi/person_xingshi.md</code> (616人详细表格，50KB)</div>
+            <div class="note-item">• 先秦姓氏说明：<code>data/xingshi/pre_qin_xingshi.md</code> (50KB)</div>
+            <div class="note-item">• 转换脚本：<code>kg/entities/scripts/update_xingshi_from_md.py</code> (MD→JSON增量更新)</div>
+            <div class="note-item">• 发布脚本：<code>scripts/publish_xingshi_data.py</code> (发布到docs目录)</div>
         </div>
     </div>
 
+    <!-- ag-Grid JS -->
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-community@31.0.0/dist/ag-grid-community.js"></script>
+
     <script>
+        let gridApi;
+        let allPersonData = [];
+
         function toggleXing(header) {
             const entry = header.parentElement;
             entry.classList.toggle('collapsed');
@@ -662,7 +806,271 @@
                     entry.classList.add('collapsed');
                 }
             });
+
+            // 加载人物姓氏数据
+            loadPersonData();
         });
+
+        // 加载人物姓氏数据
+        async function loadPersonData() {
+            const gridDiv = document.getElementById('personGrid');
+
+            try {
+                const response = await fetch('data/xingshi/person_xingshi.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                const persons = data.persons;
+
+                // 转换为表格数据
+                const rowData = Object.keys(persons).map(name => {
+                    const p = persons[name];
+                    return {
+                        '人名': name,
+                        '姓': p.xing || '',
+                        '氏': p.shi || '',
+                        '名': p.ming || '',
+                        '字': p.zi || '',
+                        '时期': p.period === 'pre-qin' ? '先秦' : '秦汉',
+                        '姓源': p.xing_heritage || '',
+                        '氏类型': p.shi_type || '',
+                        '氏来源': p.shi_origin || '',
+                        '置信度': p.confidence || '',
+                        '推理规则': p.rule || '',
+                        '章节': p.source_chapter ? p.source_chapter.join(', ') : ''
+                    };
+                });
+
+                allPersonData = rowData;
+
+                // 创建列定义
+                const columnDefs = [
+                    {
+                        field: '人名',
+                        headerName: '人名',
+                        pinned: 'left',
+                        width: 120,
+                        filter: 'agTextColumnFilter',
+                        sortable: true,
+                        resizable: true,
+                    },
+                    {
+                        field: '姓',
+                        headerName: '姓',
+                        width: 100,
+                        filter: 'agTextColumnFilter',
+                        sortable: true,
+                        resizable: true,
+                    },
+                    {
+                        field: '氏',
+                        headerName: '氏',
+                        width: 100,
+                        filter: 'agTextColumnFilter',
+                        sortable: true,
+                        resizable: true,
+                    },
+                    {
+                        field: '名',
+                        headerName: '名',
+                        width: 100,
+                        filter: 'agTextColumnFilter',
+                        sortable: true,
+                        resizable: true,
+                    },
+                    {
+                        field: '字',
+                        headerName: '字',
+                        width: 100,
+                        filter: 'agTextColumnFilter',
+                        sortable: true,
+                        resizable: true,
+                    },
+                    {
+                        field: '时期',
+                        headerName: '时期',
+                        width: 100,
+                        filter: 'agSetColumnFilter',
+                        sortable: true,
+                        resizable: true,
+                    },
+                    {
+                        field: '姓源',
+                        headerName: '姓源',
+                        width: 200,
+                        filter: 'agTextColumnFilter',
+                        sortable: true,
+                        resizable: true,
+                        wrapText: true,
+                        autoHeight: true,
+                    },
+                    {
+                        field: '氏类型',
+                        headerName: '氏类型',
+                        width: 100,
+                        filter: 'agSetColumnFilter',
+                        sortable: true,
+                        resizable: true,
+                    },
+                    {
+                        field: '氏来源',
+                        headerName: '氏来源',
+                        width: 150,
+                        filter: 'agTextColumnFilter',
+                        sortable: true,
+                        resizable: true,
+                    },
+                    {
+                        field: '置信度',
+                        headerName: '置信度',
+                        width: 100,
+                        filter: 'agSetColumnFilter',
+                        sortable: true,
+                        resizable: true,
+                    },
+                    {
+                        field: '推理规则',
+                        headerName: '推理规则',
+                        width: 100,
+                        filter: 'agSetColumnFilter',
+                        sortable: true,
+                        resizable: true,
+                    },
+                    {
+                        field: '章节',
+                        headerName: '章节',
+                        width: 150,
+                        filter: 'agTextColumnFilter',
+                        sortable: true,
+                        resizable: true,
+                    }
+                ];
+
+                // 创建表格配置
+                const gridOptions = {
+                    columnDefs: columnDefs,
+                    rowData: rowData,
+                    defaultColDef: {
+                        sortable: true,
+                        filter: true,
+                        resizable: true,
+                        floatingFilter: true,
+                    },
+                    pagination: true,
+                    paginationPageSize: 100,
+                    paginationPageSizeSelector: [50, 100, 200, 500],
+                    domLayout: 'normal',
+                    enableCellTextSelection: true,
+                    ensureDomOrder: true,
+                    onGridReady: function(params) {
+                        gridApi = params.api;
+                        params.api.sizeColumnsToFit();
+                        updatePersonStats();
+                    },
+                    onFilterChanged: updatePersonStats,
+                    onSortChanged: updatePersonStats,
+                    localeText: {
+                        page: '页',
+                        of: '/',
+                        to: '-',
+                        more: '更多',
+                        next: '下一页',
+                        last: '末页',
+                        first: '首页',
+                        previous: '上一页',
+                        loadingOoo: '加载中...',
+                        noRowsToShow: '没有数据',
+                        filterOoo: '筛选...',
+                        equals: '等于',
+                        notEqual: '不等于',
+                        contains: '包含',
+                        notContains: '不包含',
+                        startsWith: '开始于',
+                        endsWith: '结束于',
+                        blank: '空白',
+                        notBlank: '非空白',
+                        andCondition: '且',
+                        orCondition: '或',
+                        applyFilter: '应用',
+                        clearFilter: '清除',
+                        resetFilter: '重置',
+                    }
+                };
+
+                // 清空并创建新表格
+                gridDiv.innerHTML = '';
+                agGrid.createGrid(gridDiv, gridOptions);
+
+                // 显示统计栏
+                document.getElementById('personStats').style.display = 'flex';
+
+                // 快速搜索事件
+                document.getElementById('personSearch').addEventListener('input', function(e) {
+                    if (gridApi) {
+                        gridApi.setGridOption('quickFilterText', e.target.value);
+                        updatePersonStats();
+                    }
+                });
+
+            } catch (error) {
+                console.error('加载数据失败:', error);
+                gridDiv.innerHTML = `
+                    <div style="background: #fff3cd; border: 1px solid #ffc107; border-radius: 4px; padding: 1em; margin: 1em 0; color: #856404;">
+                        <strong>加载失败：</strong>${error.message}<br>
+                        <small>请检查JSON文件路径是否正确，或查看浏览器控制台获取详细信息。</small>
+                    </div>
+                `;
+            }
+        }
+
+        // 更新统计信息
+        function updatePersonStats() {
+            if (!gridApi) return;
+
+            const displayedRows = gridApi.getDisplayedRowCount();
+            const totalRows = allPersonData.length;
+            const preQinCount = allPersonData.filter(p => p['时期'] === '先秦').length;
+
+            document.getElementById('totalPersons').textContent = totalRows;
+            document.getElementById('displayedPersons').textContent = displayedRows;
+            document.getElementById('preQinCount').textContent = preQinCount;
+        }
+
+        // 导出CSV
+        function exportPersonCSV() {
+            if (!gridApi) {
+                alert('请先加载数据');
+                return;
+            }
+
+            gridApi.exportDataAsCsv({
+                fileName: `史记人物姓氏表_${getTimestamp()}.csv`,
+                columnSeparator: ',',
+            });
+        }
+
+        // 清除筛选
+        function clearPersonFilters() {
+            if (!gridApi) return;
+
+            gridApi.setFilterModel(null);
+            document.getElementById('personSearch').value = '';
+            gridApi.setGridOption('quickFilterText', '');
+            updatePersonStats();
+        }
+
+        // 获取时间戳
+        function getTimestamp() {
+            const now = new Date();
+            return now.getFullYear() +
+                String(now.getMonth() + 1).padStart(2, '0') +
+                String(now.getDate()).padStart(2, '0') +
+                '_' +
+                String(now.getHours()).padStart(2, '0') +
+                String(now.getMinutes()).padStart(2, '0');
+        }
     </script>
 </body>
 </html>
