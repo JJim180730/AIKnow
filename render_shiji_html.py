@@ -527,6 +527,7 @@ def markdown_to_html(md_file, output_file=None, css_file=None, prev_chapter=None
             continue
 
         # 标题 - 为h1标题添加原文链接
+        # 标题中的 [数字] 编号使用 section-* 而非 pn-* ID
         if line.startswith('# '):
             flush_para()
             title_content = line[2:]
@@ -534,18 +535,28 @@ def markdown_to_html(md_file, output_file=None, css_file=None, prev_chapter=None
                 line = f'<h1>{title_content} <a href="{original_text_file}" class="original-text-link">原文</a></h1>'
             else:
                 line = f'<h1>{title_content}</h1>'
+            # 将 h1 中的 pn- 替换为 section-
+            line = line.replace('id="pn-', 'id="section-').replace('href="#pn-', 'href="#section-')
         elif line.startswith('## '):
             flush_para()
             line = f'<h2>{line[3:]}</h2>'
+            # 将 h2 中的 pn- 替换为 section-
+            line = line.replace('id="pn-', 'id="section-').replace('href="#pn-', 'href="#section-')
         elif line.startswith('### '):
             flush_para()
             line = f'<h3>{line[4:]}</h3>'
+            # 将 h3 中的 pn- 替换为 section-
+            line = line.replace('id="pn-', 'id="section-').replace('href="#pn-', 'href="#section-')
         elif line.startswith('#### '):
             flush_para()
             line = f'<h4>{line[5:]}</h4>'
+            # 将 h4 中的 pn- 替换为 section-
+            line = line.replace('id="pn-', 'id="section-').replace('href="#pn-', 'href="#section-')
         elif line.startswith('##### '):
             flush_para()
             line = f'<h5>{line[6:]}</h5>'
+            # 将 h5 中的 pn- 替换为 section-
+            line = line.replace('id="pn-', 'id="section-').replace('href="#pn-', 'href="#section-')
 
         # 分隔线
         elif line.strip() == '---':
