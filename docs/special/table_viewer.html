@@ -94,9 +94,10 @@
         }
 
         #tableGrid {
-            height: 600px;
+            height: auto;
             width: 100%;
             margin: 1.5em 0;
+            min-height: 400px;
         }
 
         .ag-theme-alpine {
@@ -106,6 +107,38 @@
             --ag-border-color: #e6e0c0;
             --ag-row-hover-color: #f8f5e8;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+        }
+
+        /* 确保表头固定在顶部 */
+        .ag-header {
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 102 !important;
+            background: white !important;
+        }
+
+        /* 固定横向滚动条在表头正下方 */
+        .ag-body-horizontal-scroll-viewport {
+            position: sticky !important;
+            top: calc(var(--ag-header-height, 48px)) !important;
+            z-index: 101 !important;
+            background: white !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+        }
+
+        .ag-body-horizontal-scroll {
+            position: sticky !important;
+            top: calc(var(--ag-header-height, 48px)) !important;
+            z-index: 101 !important;
+            background: white !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+        }
+
+        /* 横向滚动容器 */
+        .ag-body-horizontal-scroll-container {
+            position: sticky !important;
+            top: calc(var(--ag-header-height, 48px)) !important;
+            z-index: 101 !important;
         }
 
         .loading-message {
@@ -325,7 +358,7 @@
                     // 三代世表格式（多section）
                     rowData = data.sections[0].rows;
                     const columns = data.sections[0].columns;
-                    columnDefs = columns.map(col => ({
+                    columnDefs = columns.map((col, index) => ({
                         field: col,
                         headerName: col,
                         filter: 'agTextColumnFilter',
@@ -334,12 +367,13 @@
                         minWidth: 150,
                         wrapText: true,
                         autoHeight: true,
+                        pinned: index === 0 ? 'left' : null,  // 固定第一列
                     }));
                 } else if (data.rows) {
                     // 其他表格格式
                     rowData = data.rows;
                     const columns = data.table_info.columns;
-                    columnDefs = columns.map(col => ({
+                    columnDefs = columns.map((col, index) => ({
                         field: col,
                         headerName: col,
                         filter: 'agTextColumnFilter',
@@ -348,6 +382,7 @@
                         minWidth: 150,
                         wrapText: true,
                         autoHeight: true,
+                        pinned: index === 0 ? 'left' : null,  // 固定第一列
                     }));
                 } else {
                     throw new Error('不支持的JSON格式');
@@ -365,9 +400,8 @@
                         wrapText: true,
                         autoHeight: true,
                     },
-                    pagination: true,
-                    paginationPageSize: 50,
-                    paginationPageSizeSelector: [20, 50, 100, 200],
+                    pagination: false,
+                    domLayout: 'autoHeight',
                     enableCellTextSelection: true,
                     ensureDomOrder: true,
                     onGridReady: function(params) {
