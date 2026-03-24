@@ -2394,15 +2394,6 @@
       }
     }
   },
-  "024": {
-    "17.4": {
-      "三年": {
-        "ruler": "晋平公",
-        "method": "nearby_ruler",
-        "ce_year": -555
-      }
-    }
-  },
   "026": {
     "2.3.2": {
       "二十六年": {
@@ -2811,20 +2802,6 @@
       }
     }
   },
-  "027": {
-    "118": {
-      "十五年": {
-        "ruler": "秦始皇",
-        "method": "nearby_ruler",
-        "ce_year": -232
-      },
-      "三十年": {
-        "ruler": "秦始皇",
-        "method": "sequential",
-        "ce_year": -217
-      }
-    }
-  },
   "028": {
     "13": {
       "九年": {
@@ -2905,11 +2882,6 @@
       }
     },
     "44": {
-      "十八年": {
-        "ruler": "秦始皇帝",
-        "method": "sequential",
-        "ce_year": -229
-      },
       "十三年": {
         "ruler": "孝文",
         "method": "nearby_ruler",
@@ -2930,9 +2902,9 @@
         "ce_year": -163
       },
       "元年": {
-        "ruler": "新垣平",
+        "ruler": "平|新垣平",
         "method": "raw_nearby",
-        "ruler_key": "新垣平元年"
+        "ruler_key": "平|新垣平元年"
       }
     },
     "55": {
@@ -2957,13 +2929,6 @@
       }
     },
     "62": {
-      "三年": {
-        "ruler": "齐桓公",
-        "method": "sequential",
-        "ce_year": -683
-      }
-    },
-    "69": {
       "三年": {
         "ruler": "齐桓公",
         "method": "sequential",
@@ -2998,13 +2963,6 @@
         "ce_year": -681
       }
     },
-    "107": {
-      "五年": {
-        "ruler": "齐桓公",
-        "method": "sequential",
-        "ce_year": -681
-      }
-    },
     "108": {
       "三年": {
         "ruler": "齐桓公",
@@ -3015,24 +2973,6 @@
         "ruler": "齐桓公",
         "method": "sequential",
         "ce_year": -681
-      }
-    }
-  },
-  "029": {
-    "1": {
-      "十三年": {
-        "ruler": "禹",
-        "method": "raw_nearby",
-        "ruler_key": "禹十三年"
-      }
-    }
-  },
-  "030": {
-    "27": {
-      "三年": {
-        "ruler": "孔仅",
-        "method": "raw_nearby",
-        "ruler_key": "孔仅三年"
       }
     }
   },
@@ -5242,21 +5182,6 @@
         "method": "nearby_ruler",
         "ce_year": -849
       },
-      "三十六年": {
-        "ruler": "陈厘公",
-        "method": "nearby_ruler_corrected",
-        "ce_year": -796
-      },
-      "十五年": {
-        "ruler": "陈武公",
-        "method": "nearby_ruler",
-        "ce_year": -781
-      },
-      "三年": {
-        "ruler": "陈夷公",
-        "method": "nearby_ruler",
-        "ce_year": -778
-      },
       "七年": {
         "ruler": "陈平公",
         "method": "nearby_ruler",
@@ -5310,9 +5235,9 @@
     },
     "10.10": {
       "七年": {
-        "ruler": "陈庄公",
+        "ruler": "陈厉公",
         "method": "nearby_ruler",
-        "ce_year": -693
+        "ce_year": -700
       }
     },
     "11.11": {
@@ -5352,20 +5277,10 @@
         "method": "nearby_ruler",
         "ce_year": -643
       },
-      "十六年": {
-        "ruler": "陈穆公",
-        "method": "nearby_ruler",
-        "ce_year": -632
-      },
       "十一年": {
         "ruler": "陈共公",
         "method": "nearby_ruler",
         "ce_year": -621
-      },
-      "十八年": {
-        "ruler": "秦穆公",
-        "method": "nearby_ruler",
-        "ce_year": -642
       }
     },
     "15.15": {
@@ -5509,36 +5424,6 @@
       }
     },
     "28.28": {
-      "二十三年": {
-        "ruler": "陈平公",
-        "method": "nearby_ruler_corrected",
-        "ce_year": -755
-      },
-      "十八年": {
-        "ruler": "陈平公",
-        "method": "nearby_ruler",
-        "ce_year": -760
-      },
-      "十七年": {
-        "ruler": "陈桓公",
-        "method": "nearby_ruler",
-        "ce_year": -728
-      },
-      "十四年": {
-        "ruler": "陈文公",
-        "method": "nearby_ruler",
-        "ce_year": -741
-      },
-      "十二年": {
-        "ruler": "陈湣公",
-        "method": "nearby_ruler",
-        "ce_year": -490
-      },
-      "十九年": {
-        "ruler": "陈平公",
-        "method": "sequential",
-        "ce_year": -759
-      },
       "十五年": {
         "ruler": "陈湣公",
         "method": "nearby_ruler",
@@ -5550,14 +5435,9 @@
         "ce_year": -486
       },
       "四十四年": {
-        "ruler": "陈湣公",
-        "method": "nearby_ruler",
-        "ce_year": -458
-      },
-      "三十四年": {
         "ruler": "楚惠王",
         "method": "nearby_ruler",
-        "ce_year": -455
+        "ce_year": -445
       }
     }
   },
@@ -5588,9 +5468,9 @@
     },
     "10.10": {
       "五年": {
-        "ruler": "卫武公",
-        "method": "sequential",
-        "ce_year": -808
+        "ruler": "卫庄公",
+        "method": "nearby_ruler",
+        "ce_year": -476
       },
       "十八年": {
         "ruler": "卫君起",
@@ -5656,13 +5536,6 @@
         "ce_year": -696
       }
     },
-    "15.15": {
-      "八年": {
-        "ruler": "卫惠公",
-        "method": "nearby_ruler",
-        "ce_year": -692
-      }
-    },
     "16.16": {
       "二十五年": {
         "ruler": "卫黔牟",
@@ -5682,33 +5555,21 @@
     },
     "17.17": {
       "九年": {
-        "ruler": "卫黔牟",
-        "method": "sequential",
-        "ce_year": -688
-      }
-    },
-    "19.19": {
-      "元年": {
-        "ruler": "戴公申",
-        "method": "raw_nearby",
-        "ruler_key": "戴公申元年"
-      },
-      "八年": {
-        "ruler": "卫惠公",
+        "ruler": "卫懿公",
         "method": "nearby_ruler",
-        "ce_year": -692
+        "ce_year": -660
       }
     },
     "21.21": {
       "十六年": {
-        "ruler": "卫黔牟",
+        "ruler": "卫文公",
         "method": "sequential_corrected",
-        "ce_year": -681
+        "ce_year": -644
       },
       "十七年": {
-        "ruler": "卫黔牟",
+        "ruler": "卫文公",
         "method": "sequential_corrected",
-        "ce_year": -680
+        "ce_year": -643
       },
       "二十五年": {
         "ruler": "齐桓公",
@@ -5718,14 +5579,14 @@
     },
     "22.22": {
       "三年": {
-        "ruler": "卫惠公",
-        "method": "sequential",
-        "ce_year": -697
+        "ruler": "卫成公",
+        "method": "nearby_ruler",
+        "ce_year": -632
       },
       "七年": {
-        "ruler": "卫惠公",
+        "ruler": "卫成公",
         "method": "sequential",
-        "ce_year": -693
+        "ce_year": -628
       },
       "十二年": {
         "ruler": "晋文公",
@@ -5772,21 +5633,21 @@
     },
     "24.24": {
       "十三年": {
-        "ruler": "卫定公",
-        "method": "sequential",
-        "ce_year": -576
+        "ruler": "卫献公",
+        "method": "nearby_ruler",
+        "ce_year": -564
       },
       "十八年": {
-        "ruler": "卫定公",
+        "ruler": "卫献公",
         "method": "sequential",
-        "ce_year": -571
+        "ce_year": -559
       }
     },
     "25.25": {
       "十二年": {
-        "ruler": "卫定公",
+        "ruler": "卫献公",
         "method": "sequential",
-        "ce_year": -577
+        "ce_year": -565
       }
     },
     "26.26": {
@@ -5805,94 +5666,94 @@
     },
     "28.28": {
       "六年": {
-        "ruler": "卫献公",
-        "method": "sequential",
-        "ce_year": -571
+        "ruler": "卫襄公",
+        "method": "nearby_ruler",
+        "ce_year": -538
       }
     },
     "29.29": {
       "九年": {
-        "ruler": "卫献公",
+        "ruler": "卫襄公",
         "method": "sequential",
-        "ce_year": -568
+        "ce_year": -535
       }
     },
     "30.30": {
       "五年": {
-        "ruler": "卫献公",
-        "method": "sequential",
-        "ce_year": -572
+        "ruler": "卫灵公",
+        "method": "nearby_ruler",
+        "ce_year": -530
       },
       "六年": {
-        "ruler": "晋昭公",
+        "ruler": "卫灵公",
         "method": "nearby_ruler",
-        "ce_year": -526
+        "ce_year": -529
       },
       "十一年": {
-        "ruler": "周平王",
+        "ruler": "卫灵公",
         "method": "nearby_ruler",
-        "ce_year": -760
+        "ce_year": -524
       }
     },
     "30.31": {
       "三十八年": {
         "ruler": "卫灵公",
-        "method": "sequential_corrected",
+        "method": "sequential",
         "ce_year": -497
       }
     },
     "31.32": {
       "三十九年": {
         "ruler": "卫灵公",
-        "method": "sequential_corrected",
+        "method": "sequential",
         "ce_year": -496
       }
     },
     "32.33": {
       "四十二年": {
         "ruler": "卫灵公",
-        "method": "sequential_corrected",
+        "method": "sequential",
         "ce_year": -493
       }
     },
     "33.35": {
       "四年": {
-        "ruler": "卫献公",
+        "ruler": "卫灵公",
         "method": "sequential",
-        "ce_year": -573
+        "ce_year": -531
       },
       "八年": {
-        "ruler": "卫献公",
+        "ruler": "卫灵公",
         "method": "sequential",
-        "ce_year": -569
+        "ce_year": -527
       }
     },
     "33.36": {
       "九年": {
-        "ruler": "卫献公",
+        "ruler": "卫灵公",
         "method": "sequential",
-        "ce_year": -568
+        "ce_year": -526
       }
     },
     "34.37": {
       "十二年": {
-        "ruler": "卫献公",
+        "ruler": "卫灵公",
         "method": "sequential",
-        "ce_year": -565
+        "ce_year": -523
       }
     },
     "37.40": {
       "二年": {
-        "ruler": "卫献公",
+        "ruler": "卫灵公",
         "method": "sequential",
-        "ce_year": -575
+        "ce_year": -533
       }
     },
     "38.41": {
       "三年": {
-        "ruler": "卫献公",
+        "ruler": "卫灵公",
         "method": "sequential",
-        "ce_year": -574
+        "ce_year": -532
       }
     },
     "39.42": {
@@ -6567,18 +6428,6 @@
         "ce_year": -682
       }
     },
-    "18.20": {
-      "三十七年": {
-        "ruler": "晋小子",
-        "method": "sequential",
-        "ce_year": -673
-      },
-      "三十八年": {
-        "ruler": "晋小子",
-        "method": "sequential",
-        "ce_year": -672
-      }
-    },
     "20.22": {
       "元年": {
         "ruler": "晋献公",
@@ -6678,13 +6527,6 @@
         "ce_year": -650
       }
     },
-    "34.40": {
-      "十四年": {
-        "ruler": "晋惠公",
-        "method": "sequential",
-        "ce_year": -637
-      }
-    },
     "36.42": {
       "二年": {
         "ruler": "晋惠公",
@@ -6761,11 +6603,6 @@
         "ruler": "晋惠公",
         "method": "nearby_ruler",
         "ce_year": -644
-      },
-      "二十五年": {
-        "ruler": "晋景公",
-        "method": "sequential_corrected",
-        "ce_year": -575
       }
     },
     "52.59": {
@@ -7552,61 +7389,56 @@
       }
     },
     "25.28": {
-      "三年": {
-        "ruler": "楚庄王",
-        "method": "nearby_ruler",
-        "ce_year": -611
-      },
       "六年": {
-        "ruler": "楚庄王",
+        "ruler": "楚穆王",
         "method": "sequential",
-        "ce_year": -608
+        "ce_year": -620
       }
     },
     "26.29": {
       "八年": {
-        "ruler": "楚庄王",
+        "ruler": "楚穆王",
         "method": "sequential",
-        "ce_year": -606
+        "ce_year": -618
       }
     },
     "27.30": {
       "九年": {
-        "ruler": "楚庄王",
+        "ruler": "楚穆王",
         "method": "sequential",
-        "ce_year": -605
+        "ce_year": -617
       },
       "十三年": {
-        "ruler": "楚庄王",
+        "ruler": "楚穆王",
         "method": "sequential",
-        "ce_year": -601
+        "ce_year": -613
       }
     },
     "28.31": {
       "十六年": {
-        "ruler": "楚庄王",
+        "ruler": "楚穆王",
         "method": "sequential",
-        "ce_year": -598
+        "ce_year": -610
       }
     },
     "29.32": {
       "十七年": {
-        "ruler": "楚庄王",
+        "ruler": "楚穆王",
         "method": "sequential",
-        "ce_year": -597
+        "ce_year": -609
       }
     },
     "30.33": {
       "二十年": {
         "ruler": "楚庄王",
-        "method": "sequential",
+        "method": "sequential_corrected",
         "ce_year": -594
       }
     },
     "31.34": {
       "二十三年": {
         "ruler": "楚庄王",
-        "method": "sequential",
+        "method": "sequential_corrected",
         "ce_year": -591
       }
     },
@@ -7662,18 +7494,6 @@
         "ruler": "楚灵王",
         "method": "sequential",
         "ce_year": -529
-      }
-    },
-    "45.49": {
-      "十三年": {
-        "ruler": "楚灵王",
-        "method": "sequential",
-        "ce_year": -528
-      },
-      "十九年": {
-        "ruler": "楚平王",
-        "method": "sequential_corrected",
-        "ce_year": -510
       }
     },
     "46.50": {
@@ -8190,43 +8010,6 @@
         "ruler": "楚幽王",
         "method": "sequential",
         "ce_year": -233
-      }
-    }
-  },
-  "041": {
-    "12.1": {
-      "七年": {
-        "ruler": "越王勾践",
-        "method": "nearby_ruler",
-        "ce_year": -490
-      }
-    },
-    "13.9": {
-      "三年": {
-        "ruler": "越王勾践",
-        "method": "sequential",
-        "ce_year": -494
-      }
-    },
-    "15.1": {
-      "四年": {
-        "ruler": "越王勾践",
-        "method": "sequential",
-        "ce_year": -493
-      }
-    },
-    "15.3": {
-      "三年": {
-        "ruler": "越王勾践",
-        "method": "sequential",
-        "ce_year": -494
-      }
-    },
-    "15.6": {
-      "二十二年": {
-        "ruler": "越王勾践",
-        "method": "sequential",
-        "ce_year": -475
       }
     }
   },
@@ -8835,19 +8618,7 @@
         "ce_year": -597
       }
     },
-    "4.5": {
-      "三年": {
-        "ruler": "赵武",
-        "method": "raw_nearby",
-        "ruler_key": "赵武三年"
-      }
-    },
     "5.2": {
-      "二十七年": {
-        "ruler": "赵武",
-        "method": "raw_nearby",
-        "ruler_key": "赵武二十七年"
-      },
       "十二年": {
         "ruler": "晋平公",
         "method": "nearby_ruler",
@@ -8904,11 +8675,6 @@
         "ruler": "晋定公",
         "method": "nearby_ruler",
         "ce_year": -475
-      },
-      "三年": {
-        "ruler": "晋定公",
-        "method": "nearby_ruler",
-        "ce_year": -509
       }
     },
     "11.1": {
@@ -8932,23 +8698,16 @@
         "ce_year": -475
       }
     },
-    "14.2": {
-      "一年": {
-        "ruler": "赵献侯",
-        "method": "nearby_ruler",
-        "ce_year": -423
-      }
-    },
     "14.3": {
       "十年": {
-        "ruler": "赵献侯",
+        "ruler": "赵襄子",
         "method": "sequential",
-        "ce_year": -414
+        "ce_year": -466
       },
       "十五年": {
-        "ruler": "赵献侯",
+        "ruler": "赵襄子",
         "method": "sequential",
-        "ce_year": -409
+        "ce_year": -461
       }
     },
     "14.4": {
@@ -8975,11 +8734,6 @@
         "ruler": "赵烈侯",
         "method": "sequential",
         "ce_year": -400
-      },
-      "十三年": {
-        "ruler": "赵武公",
-        "method": "nearby_ruler",
-        "ce_year": -387
       }
     },
     "16.1": {
@@ -10765,13 +10519,6 @@
         "ce_year": -452
       }
     },
-    "8.2": {
-      "五年": {
-        "ruler": "齐平公",
-        "method": "nearby_ruler",
-        "ce_year": -476
-      }
-    },
     "9.2": {
       "四十三年": {
         "ruler": "齐宣公",
@@ -11033,40 +10780,33 @@
         "ce_year": -284
       }
     },
-    "25.3": {
-      "五年": {
-        "ruler": "齐襄王",
-        "method": "nearby_ruler",
-        "ce_year": -279
-      }
-    },
     "25.4": {
       "十四年": {
-        "ruler": "齐襄王",
+        "ruler": "齐湣王",
         "method": "sequential",
-        "ce_year": -270
+        "ce_year": -310
       },
       "十九年": {
-        "ruler": "齐襄王",
+        "ruler": "齐湣王",
         "method": "sequential",
-        "ce_year": -265
+        "ce_year": -305
       }
     },
     "26.2": {
       "十六年": {
-        "ruler": "齐襄王",
+        "ruler": "齐湣王",
         "method": "sequential",
-        "ce_year": -268
+        "ce_year": -308
       },
       "二十三年": {
-        "ruler": "齐襄王",
+        "ruler": "齐湣王",
         "method": "sequential",
-        "ce_year": -261
+        "ce_year": -301
       },
       "二十八年": {
-        "ruler": "齐王",
-        "method": "sequential_corrected",
-        "ce_year": -237
+        "ruler": "齐湣王",
+        "method": "sequential",
+        "ce_year": -296
       },
       "三十五年": {
         "ruler": "秦始皇",
@@ -11091,9 +10831,9 @@
     },
     "26.3": {
       "四十四年": {
-        "ruler": "齐王",
-        "method": "sequential_corrected",
-        "ce_year": -221
+        "ruler": "齐湣王",
+        "method": "sequential",
+        "ce_year": -280
       }
     }
   },
@@ -11124,25 +10864,11 @@
         "ce_year": -501
       }
     },
-    "9.1": {
-      "一年": {
-        "ruler": "鲁定公",
-        "method": "nearby_ruler",
-        "ce_year": -509
-      }
-    },
     "11.1": {
       "十四年": {
         "ruler": "鲁定公",
         "method": "nearby_ruler",
         "ce_year": -496
-      }
-    },
-    "17.3": {
-      "三年": {
-        "ruler": "卫灵公",
-        "method": "nearby_ruler",
-        "ce_year": -532
       }
     },
     "21.1": {
@@ -11165,13 +10891,6 @@
         "method": "nearby_ruler",
         "ce_year": -481
       }
-    },
-    "35.1": {
-      "三年": {
-        "ruler": "孔子",
-        "method": "raw_nearby",
-        "ruler_key": "孔子三年"
-      }
     }
   },
   "049": {
@@ -11189,31 +10908,12 @@
         "ruler": "高皇帝",
         "method": "nearby_ruler",
         "ce_year": -201
-      },
-      "二十三年": {
-        "ruler": "楚王",
-        "method": "nearby_ruler",
-        "ruler_key": "楚王二十三年"
-      }
-    },
-    "4.1": {
-      "二十二年": {
-        "ruler": "周安王",
-        "method": "nearby_ruler",
-        "ce_year": -380
-      }
-    },
-    "6.1": {
-      "二年": {
-        "ruler": "孝文",
-        "method": "nearby_ruler",
-        "ce_year": -178
       }
     },
     "7.1": {
       "二十六年": {
         "ruler": "孝文",
-        "method": "sequential",
+        "method": "sequential_corrected",
         "ce_year": -154
       }
     }
@@ -11256,13 +10956,6 @@
         "method": "sequential",
         "ce_year": -205
       }
-    },
-    "9": {
-      "二年": {
-        "ruler": "高皇帝",
-        "method": "sequential",
-        "ce_year": -205
-      }
     }
   },
   "052": {
@@ -11281,11 +10974,6 @@
       }
     },
     "3": {
-      "十三年": {
-        "ruler": "高后",
-        "method": "sequential_corrected",
-        "ce_year": -175
-      },
       "六年": {
         "ruler": "孝惠",
         "method": "nearby_ruler",
@@ -11447,28 +11135,6 @@
         "ce_year": -169
       }
     },
-    "41": {
-      "二十年": {
-        "ruler": "孝文",
-        "method": "sequential",
-        "ce_year": -160
-      },
-      "三十六年": {
-        "ruler": "孝武",
-        "method": "sequential_corrected",
-        "ce_year": -105
-      },
-      "二十八年": {
-        "ruler": "孝文",
-        "method": "sequential",
-        "ce_year": -152
-      },
-      "五年": {
-        "ruler": "孝文",
-        "method": "sequential",
-        "ce_year": -175
-      }
-    },
     "42": {
       "六年": {
         "ruler": "孝文",
@@ -11623,23 +11289,11 @@
         "ce_year": -189
       }
     },
-    "19": {
-      "七年": {
-        "ruler": "高后",
-        "method": "nearby_ruler",
-        "ce_year": -181
-      }
-    },
     "26": {
       "二年": {
         "ruler": "孝文",
         "method": "nearby_ruler",
         "ce_year": -178
-      },
-      "二十三年": {
-        "ruler": "孝文",
-        "method": "sequential",
-        "ce_year": -157
       }
     }
   },
@@ -11658,13 +11312,6 @@
         "ce_year": -169
       }
     },
-    "12": {
-      "六年": {
-        "ruler": "孝文",
-        "method": "nearby_ruler",
-        "ce_year": -174
-      }
-    },
     "14": {
       "三年": {
         "ruler": "孝景",
@@ -11680,16 +11327,6 @@
       }
     },
     "21": {
-      "十九年": {
-        "ruler": "孝景",
-        "method": "nearby_ruler",
-        "ce_year": -138
-      },
-      "十三年": {
-        "ruler": "孝景",
-        "method": "sequential",
-        "ce_year": -144
-      },
       "五年": {
         "ruler": "孝景",
         "method": "sequential",
@@ -12020,122 +11657,6 @@
       }
     }
   },
-  "063": {
-    "6": {
-      "二十九年": {
-        "ruler": "孔子",
-        "method": "raw_nearby",
-        "ruler_key": "孔子二十九年"
-      }
-    },
-    "11": {
-      "十五年": {
-        "ruler": "昭侯",
-        "method": "raw_nearby",
-        "ruler_key": "昭侯十五年"
-      }
-    }
-  },
-  "066": {
-    "16": {
-      "二年": {
-        "ruler": "太宰",
-        "method": "raw_nearby",
-        "ruler_key": "太宰二年"
-      }
-    },
-    "20": {
-      "二年": {
-        "ruler": "阳生",
-        "method": "raw_nearby",
-        "ruler_key": "阳生二年"
-      },
-      "九年": {
-        "ruler": "越王勾践",
-        "method": "nearby_ruler",
-        "ce_year": -488
-      }
-    },
-    "21": {
-      "三年": {
-        "ruler": "楚惠王",
-        "method": "nearby_ruler",
-        "ce_year": -486
-      }
-    },
-    "22": {
-      "五年": {
-        "ruler": "楚惠王",
-        "method": "sequential",
-        "ce_year": -484
-      }
-    }
-  },
-  "067": {
-    "30": {
-      "三年": {
-        "ruler": "予",
-        "method": "raw_nearby",
-        "ruler_key": "予三年"
-      }
-    },
-    "45": {
-      "三年": {
-        "ruler": "夫差",
-        "method": "raw_nearby",
-        "ruler_key": "夫差三年"
-      }
-    },
-    "46": {
-      "十年": {
-        "ruler": "子贡",
-        "method": "raw_nearby",
-        "ruler_key": "子贡十年"
-      }
-    }
-  },
-  "068": {
-    "6": {
-      "十年": {
-        "ruler": "公孙贾",
-        "method": "raw_nearby",
-        "ruler_key": "公孙贾十年"
-      }
-    },
-    "7": {
-      "四年": {
-        "ruler": "丞",
-        "method": "raw_nearby",
-        "ruler_key": "丞四年"
-      }
-    },
-    "9": {
-      "十年": {
-        "ruler": "商君",
-        "method": "raw_nearby",
-        "ruler_key": "商君十年"
-      },
-      "七年": {
-        "ruler": "缪公",
-        "method": "raw_nearby",
-        "ruler_key": "缪公七年"
-      },
-      "八年": {
-        "ruler": "公子虔",
-        "method": "raw_nearby",
-        "ruler_key": "公子虔八年"
-      }
-    }
-  },
-  "069": {
-    "38": {
-      "十五年": {
-        "ruler": "武安君",
-        "method": "raw_nearby",
-        "ruler_key": "武安君十五年"
-      }
-    }
-  },
   "070": {
     "10": {
       "十年": {
@@ -12196,111 +11717,17 @@
     "9": {
       "三年": {
         "ruler": "秦武王",
-        "method": "sequential",
+        "method": "nearby_ruler",
         "ce_year": -308
-      }
-    },
-    "17": {
-      "三年": {
-        "ruler": "秦始皇",
-        "method": "sequential",
-        "ce_year": -244
-      }
-    }
-  },
-  "072": {
-    "3": {
-      "七年": {
-        "ruler": "秦昭襄王",
-        "method": "nearby_ruler",
-        "ce_year": -300
-      }
-    },
-    "4": {
-      "十四年": {
-        "ruler": "秦昭襄王",
-        "method": "nearby_ruler",
-        "ce_year": -293
-      }
-    },
-    "5": {
-      "十九年": {
-        "ruler": "秦昭襄王",
-        "method": "nearby_ruler",
-        "ce_year": -288
-      }
-    },
-    "6": {
-      "三十二年": {
-        "ruler": "秦昭襄王",
-        "method": "nearby_ruler",
-        "ce_year": -275
-      }
-    },
-    "9": {
-      "三十六年": {
-        "ruler": "秦昭襄王",
-        "method": "nearby_ruler",
-        "ce_year": -271
       }
     }
   },
   "073": {
-    "1": {
-      "十三年": {
-        "ruler": "秦昭襄王",
-        "method": "nearby_ruler",
-        "ce_year": -294
-      },
-      "五年": {
-        "ruler": "秦昭襄王",
-        "method": "sequential",
-        "ce_year": -302
-      },
-      "三十四年": {
-        "ruler": "秦昭襄王",
-        "method": "nearby_ruler",
-        "ce_year": -273
-      },
-      "四十四年": {
-        "ruler": "秦昭襄王",
-        "method": "nearby_ruler",
-        "ce_year": -263
-      }
-    },
-    "2": {
-      "五年": {
-        "ruler": "秦昭襄王",
-        "method": "sequential",
-        "ce_year": -302
-      }
-    },
-    "3": {
-      "四十六年": {
-        "ruler": "秦昭襄王",
-        "method": "sequential",
-        "ce_year": -261
-      }
-    },
-    "4": {
-      "四十七年": {
-        "ruler": "秦昭襄王",
-        "method": "sequential",
-        "ce_year": -260
-      }
-    },
-    "6": {
-      "四十八年": {
-        "ruler": "秦昭襄王",
-        "method": "sequential",
-        "ce_year": -259
-      }
-    },
     "7": {
       "四十九年": {
-        "ruler": "秦昭襄王",
-        "method": "sequential",
-        "ce_year": -258
+        "ruler": "武安君",
+        "method": "raw_nearby",
+        "ruler_key": "武安君四十九年"
       }
     },
     "8": {
@@ -12308,60 +11735,6 @@
         "ruler": "秦昭襄王",
         "method": "nearby_ruler",
         "ce_year": -257
-      }
-    },
-    "9": {
-      "十一年": {
-        "ruler": "秦始皇帝",
-        "method": "nearby_ruler",
-        "ce_year": -236
-      },
-      "十八年": {
-        "ruler": "秦始皇帝",
-        "method": "nearby_ruler",
-        "ce_year": -229
-      }
-    },
-    "13": {
-      "二十六年": {
-        "ruler": "秦始皇",
-        "method": "nearby_ruler",
-        "ce_year": -221
-      }
-    }
-  },
-  "075": {
-    "1": {
-      "二年": {
-        "ruler": "齐宣王",
-        "method": "nearby_ruler",
-        "ce_year": -341
-      },
-      "七年": {
-        "ruler": "齐宣王",
-        "method": "nearby_ruler",
-        "ce_year": -336
-      }
-    },
-    "6": {
-      "二十五年": {
-        "ruler": "齐湣王",
-        "method": "nearby_ruler",
-        "ce_year": -299
-      }
-    },
-    "9": {
-      "九年": {
-        "ruler": "齐湣王",
-        "method": "sequential",
-        "ce_year": -315
-      }
-    },
-    "16": {
-      "十年": {
-        "ruler": "齐湣王",
-        "method": "sequential",
-        "ce_year": -314
       }
     }
   },
@@ -12382,32 +11755,11 @@
     }
   },
   "077": {
-    "6": {
-      "二十年": {
-        "ruler": "魏安釐王",
-        "method": "raw_nearby",
-        "ruler_key": "魏安釐王二十年"
-      }
-    },
     "12": {
       "十年": {
         "ruler": "公子",
         "method": "raw_nearby",
         "ruler_key": "公子十年"
-      }
-    },
-    "13": {
-      "三十年": {
-        "ruler": "魏安釐王",
-        "method": "raw_nearby",
-        "ruler_key": "魏安釐王三十年"
-      }
-    },
-    "16": {
-      "十二年": {
-        "ruler": "高皇帝",
-        "method": "nearby_ruler",
-        "ce_year": -195
       }
     }
   },
@@ -12417,51 +11769,6 @@
         "ruler": "楚顷襄王",
         "method": "nearby_ruler",
         "ce_year": -298
-      }
-    },
-    "14": {
-      "四年": {
-        "ruler": "楚顷襄王",
-        "method": "sequential",
-        "ce_year": -295
-      },
-      "五年": {
-        "ruler": "楚顷襄王",
-        "method": "sequential",
-        "ce_year": -294
-      },
-      "八年": {
-        "ruler": "楚顷襄王",
-        "method": "sequential",
-        "ce_year": -291
-      }
-    },
-    "16": {
-      "十四年": {
-        "ruler": "楚顷襄王",
-        "method": "sequential",
-        "ce_year": -285
-      }
-    },
-    "17": {
-      "二十二年": {
-        "ruler": "楚顷襄王",
-        "method": "sequential",
-        "ce_year": -277
-      }
-    },
-    "18": {
-      "二十年": {
-        "ruler": "楚顷襄王",
-        "method": "sequential",
-        "ce_year": -279
-      }
-    },
-    "21": {
-      "二十五年": {
-        "ruler": "楚顷襄王",
-        "method": "sequential",
-        "ce_year": -274
       }
     }
   },
@@ -12473,48 +11780,11 @@
         "ce_year": -266
       }
     },
-    "23": {
-      "二年": {
-        "ruler": "秦昭襄王",
-        "method": "nearby_ruler",
-        "ce_year": -305
-      }
-    },
-    "25": {
-      "四十三年": {
-        "ruler": "秦昭襄王",
-        "method": "nearby_ruler",
-        "ce_year": -264
-      }
-    },
-    "26": {
-      "五年": {
-        "ruler": "秦昭襄王",
-        "method": "sequential",
-        "ce_year": -302
-      }
-    },
     "28": {
       "四十三年": {
         "ruler": "秦昭襄王",
         "method": "sequential",
         "ce_year": -264
-      }
-    },
-    "34": {
-      "三年": {
-        "ruler": "周文王",
-        "method": "nearby_ruler",
-        "ce_year": -1097
-      }
-    }
-  },
-  "080": {
-    "18": {
-      "十六年": {
-        "ruler": "廉颇",
-        "method": "raw_nearby",
-        "ruler_key": "廉颇十六年"
       }
     }
   },
@@ -12929,15 +12199,6 @@
       }
     }
   },
-  "101": {
-    "5.6": {
-      "三年": {
-        "ruler": "太后",
-        "method": "raw_nearby",
-        "ruler_key": "太后三年"
-      }
-    }
-  },
   "103": {
     "0": {
       "六年": {
@@ -12968,25 +12229,10 @@
         "method": "nearby_ruler",
         "ce_year": -180
       },
-      "三年": {
-        "ruler": "高后",
-        "method": "sequential",
-        "ce_year": -185
-      },
       "四年": {
         "ruler": "孝文",
         "method": "nearby_ruler",
         "ce_year": -176
-      },
-      "一年": {
-        "ruler": "意",
-        "method": "raw_nearby",
-        "ruler_key": "意一年"
-      },
-      "十年": {
-        "ruler": "高后",
-        "method": "sequential",
-        "ce_year": -178
       }
     }
   },
@@ -13007,11 +12253,6 @@
         "method": "nearby_ruler_corrected",
         "ce_year": -91
       },
-      "三年": {
-        "ruler": "孝景",
-        "method": "nearby_ruler",
-        "ce_year": -154
-      },
       "二年": {
         "ruler": "高皇帝",
         "method": "sequential",
@@ -13021,11 +12262,6 @@
   },
   "107": {
     "0": {
-      "三年": {
-        "ruler": "孝景",
-        "method": "nearby_ruler",
-        "ce_year": -154
-      },
       "四年": {
         "ruler": "孝景",
         "method": "nearby_ruler",
@@ -13040,11 +12276,6 @@
         "ruler": "孝景",
         "method": "sequential",
         "ce_year": -155
-      },
-      "五年": {
-        "ruler": "孝景",
-        "method": "sequential",
-        "ce_year": -152
       }
     }
   },
@@ -13078,13 +12309,6 @@
         "method": "nearby_ruler",
         "ce_year": -178
       }
-    },
-    "25.1": {
-      "五年": {
-        "ruler": "孝文",
-        "method": "sequential",
-        "ce_year": -175
-      }
     }
   },
   "111": {
@@ -13096,16 +12320,6 @@
       }
     },
     "15.1": {
-      "四年": {
-        "ruler": "骠骑将军",
-        "method": "raw_nearby",
-        "ruler_key": "骠骑将军四年"
-      },
-      "三年": {
-        "ruler": "骠骑将军",
-        "method": "raw_nearby",
-        "ruler_key": "骠骑将军三年"
-      },
       "六年": {
         "ruler": "骠骑将军",
         "method": "raw_nearby",
@@ -13117,13 +12331,6 @@
         "ruler": "上",
         "method": "raw_nearby",
         "ruler_key": "上元年"
-      }
-    },
-    "16.4": {
-      "十四年": {
-        "ruler": "大将军",
-        "method": "raw_nearby",
-        "ruler_key": "大将军十四年"
       }
     },
     "17.14.2": {
@@ -13243,15 +12450,6 @@
       }
     }
   },
-  "121": {
-    "19": {
-      "三年": {
-        "ruler": "孝景",
-        "method": "nearby_ruler",
-        "ce_year": -154
-      }
-    }
-  },
   "126": {
     "1": {
       "三年": {
@@ -13290,13 +12488,6 @@
     }
   },
   "130": {
-    "12.1": {
-      "五年": {
-        "ruler": "太史令",
-        "method": "raw_nearby",
-        "ruler_key": "太史令五年"
-      }
-    },
     "35.1": {
       "八年": {
         "ruler": "项",
